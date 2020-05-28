@@ -1,7 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="MalaebAlKorbModelStoreContainer" CdmEntityContainer="MalaebAlKorbEntities">
-    <EntitySetMapping Name="Contacts">
+  <EntityContainerMapping StorageEntityContainer="MalaebAlKorbModelStoreContainer" CdmEntityContainer="MalaebAlKorbEntities1">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="MalaebAlKorbModel.Admins">
+        <MappingFragment StoreEntitySet="Admins">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Emails" ColumnName="Emails" />
+          <ScalarProperty Name="Passwords" ColumnName="Passwords" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contact">
       <EntityTypeMapping TypeName="MalaebAlKorbModel.Contact">
         <MappingFragment StoreEntitySet="Contact">
           <ScalarProperty Name="messageNo" ColumnName="messageNo" />
@@ -12,7 +21,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Players">
+    <EntitySetMapping Name="Player">
       <EntityTypeMapping TypeName="MalaebAlKorbModel.Player">
         <MappingFragment StoreEntitySet="Player">
           <ScalarProperty Name="playerNo" ColumnName="playerNo" />
@@ -24,7 +33,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="playerDeleteDatas">
+    <EntitySetMapping Name="playerDeleteData">
       <EntityTypeMapping TypeName="MalaebAlKorbModel.playerDeleteData">
         <MappingFragment StoreEntitySet="playerDeleteData">
           <ScalarProperty Name="id" ColumnName="id" />
@@ -32,7 +41,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="playerUpdateDatas">
+    <EntitySetMapping Name="playerUpdateData">
       <EntityTypeMapping TypeName="MalaebAlKorbModel.playerUpdateData">
         <MappingFragment StoreEntitySet="playerUpdateData">
           <ScalarProperty Name="id" ColumnName="id" />
@@ -40,7 +49,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Reservations">
+    <EntitySetMapping Name="Reservation">
       <EntityTypeMapping TypeName="MalaebAlKorbModel.Reservation">
         <MappingFragment StoreEntitySet="Reservation">
           <ScalarProperty Name="reservationNo" ColumnName="reservationNo" />
@@ -55,7 +64,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Stadia">
+    <EntitySetMapping Name="Stadium">
       <EntityTypeMapping TypeName="MalaebAlKorbModel.Stadium">
         <MappingFragment StoreEntitySet="Stadium">
           <ScalarProperty Name="stadiumNo" ColumnName="stadiumNo" />
@@ -65,7 +74,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="stadiumDeleteDatas">
+    <EntitySetMapping Name="stadiumDeleteData">
       <EntityTypeMapping TypeName="MalaebAlKorbModel.stadiumDeleteData">
         <MappingFragment StoreEntitySet="stadiumDeleteData">
           <ScalarProperty Name="id" ColumnName="id" />
@@ -73,7 +82,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="stadiumUpdateDatas">
+    <EntitySetMapping Name="stadiumUpdateData">
       <EntityTypeMapping TypeName="MalaebAlKorbModel.stadiumUpdateData">
         <MappingFragment StoreEntitySet="stadiumUpdateData">
           <ScalarProperty Name="id" ColumnName="id" />

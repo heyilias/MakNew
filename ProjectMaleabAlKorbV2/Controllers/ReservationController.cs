@@ -21,7 +21,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
         {
             reservation.dateReservation = DateTime.Now;
             reservation.Email = Session["emails"].ToString();
-            db.Reservations.Add(reservation);
+            db.Reservation.Add(reservation);
             db.SaveChanges();
             return View();
         }

@@ -135,6 +135,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Admins.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Contact.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -276,6 +279,13 @@
     <Content Include="js\SimpleChart.js" />
     <Content Include="js\utils.js" />
     <Content Include="js\validator.min.js" />
+    <Content Include="Login_Admin\css\font-awesome.min.css" />
+    <Content Include="Login_Admin\css\style.css" />
+    <Content Include="Login_Admin\fonts\fontawesome-webfont.svg" />
+    <Content Include="Login_Admin\images\banner.jpg" />
+    <Content Include="Login_Admin\images\login-img.jpg" />
+    <Content Include="Login_Admin\images\logo.png" />
+    <Content Include="Login_Admin\index.html" />
     <Content Include="Models\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -293,7 +303,6 @@
     <Content Include="reservation_form\images\banner.jpg" />
     <Content Include="reservation_form\images\c-arrows.png" />
     <Content Include="reservation_form\images\left-img.jpg" />
-    <Content Include="reservation_form\index.html" />
     <Content Include="reservation_form\js\jquery-2.2.3.min.js" />
     <Content Include="reservation_form\js\jquery-ui.js" />
     <Content Include="reservation_form\js\wickedpicker.js" />
@@ -315,6 +324,11 @@
     <Content Include="Models\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
+    <Content Include="Login_Admin\fonts\fontawesome-webfont.eot" />
+    <Content Include="Login_Admin\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Login_Admin\fonts\fontawesome-webfont.woff" />
+    <Content Include="Login_Admin\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Login_Admin\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\demo-1.js" />
     <Content Include="Scripts\dscountdown.min.js" />
@@ -365,6 +379,7 @@
     <Content Include="Views\Admin\Stadium.cshtml" />
     <Content Include="Views\Shared\_loginSingUp.cshtml" />
     <Content Include="Views\Shared\btnReservation.cshtml" />
+    <Content Include="Views\Admin\LoginAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

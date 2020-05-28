@@ -5,6 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="MalaebAlKorbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emails" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Passwords" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
         <EntityType Name="Contact">
           <Key>
             <PropertyRef Name="messageNo" />
@@ -78,6 +86,7 @@
           <Property Name="allData" Type="nvarchar" MaxLength="300" />
         </EntityType>
         <EntityContainer Name="MalaebAlKorbModelStoreContainer">
+          <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="playerDeleteData" EntityType="Self.playerDeleteData" Schema="dbo" store:Type="Tables" />
@@ -92,6 +101,14 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MalaebAlKorbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emails" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Passwords" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <EntityType Name="Contact">
           <Key>
             <PropertyRef Name="messageNo" />
@@ -164,23 +181,33 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="allData" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="MalaebAlKorbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Contacts" EntityType="Self.Contact" />
-          <EntitySet Name="Players" EntityType="Self.Player" />
-          <EntitySet Name="playerDeleteDatas" EntityType="Self.playerDeleteData" />
-          <EntitySet Name="playerUpdateDatas" EntityType="Self.playerUpdateData" />
-          <EntitySet Name="Reservations" EntityType="Self.Reservation" />
-          <EntitySet Name="Stadia" EntityType="Self.Stadium" />
-          <EntitySet Name="stadiumDeleteDatas" EntityType="Self.stadiumDeleteData" />
-          <EntitySet Name="stadiumUpdateDatas" EntityType="Self.stadiumUpdateData" />
+        <EntityContainer Name="MalaebAlKorbEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admins" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" />
+          <EntitySet Name="Player" EntityType="Self.Player" />
+          <EntitySet Name="playerDeleteData" EntityType="Self.playerDeleteData" />
+          <EntitySet Name="playerUpdateData" EntityType="Self.playerUpdateData" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" />
+          <EntitySet Name="Stadium" EntityType="Self.Stadium" />
+          <EntitySet Name="stadiumDeleteData" EntityType="Self.stadiumDeleteData" />
+          <EntitySet Name="stadiumUpdateData" EntityType="Self.stadiumUpdateData" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MalaebAlKorbModelStoreContainer" CdmEntityContainer="MalaebAlKorbEntities">
-          <EntitySetMapping Name="Contacts">
+        <EntityContainerMapping StorageEntityContainer="MalaebAlKorbModelStoreContainer" CdmEntityContainer="MalaebAlKorbEntities1">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="MalaebAlKorbModel.Admins">
+              <MappingFragment StoreEntitySet="Admins">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Emails" ColumnName="Emails" />
+                <ScalarProperty Name="Passwords" ColumnName="Passwords" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contact">
             <EntityTypeMapping TypeName="MalaebAlKorbModel.Contact">
               <MappingFragment StoreEntitySet="Contact">
                 <ScalarProperty Name="messageNo" ColumnName="messageNo" />
@@ -191,7 +218,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Players">
+          <EntitySetMapping Name="Player">
             <EntityTypeMapping TypeName="MalaebAlKorbModel.Player">
               <MappingFragment StoreEntitySet="Player">
                 <ScalarProperty Name="playerNo" ColumnName="playerNo" />
@@ -203,7 +230,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="playerDeleteDatas">
+          <EntitySetMapping Name="playerDeleteData">
             <EntityTypeMapping TypeName="MalaebAlKorbModel.playerDeleteData">
               <MappingFragment StoreEntitySet="playerDeleteData">
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -211,7 +238,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="playerUpdateDatas">
+          <EntitySetMapping Name="playerUpdateData">
             <EntityTypeMapping TypeName="MalaebAlKorbModel.playerUpdateData">
               <MappingFragment StoreEntitySet="playerUpdateData">
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -219,7 +246,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Reservations">
+          <EntitySetMapping Name="Reservation">
             <EntityTypeMapping TypeName="MalaebAlKorbModel.Reservation">
               <MappingFragment StoreEntitySet="Reservation">
                 <ScalarProperty Name="reservationNo" ColumnName="reservationNo" />
@@ -234,7 +261,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Stadia">
+          <EntitySetMapping Name="Stadium">
             <EntityTypeMapping TypeName="MalaebAlKorbModel.Stadium">
               <MappingFragment StoreEntitySet="Stadium">
                 <ScalarProperty Name="stadiumNo" ColumnName="stadiumNo" />
@@ -244,7 +271,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="stadiumDeleteDatas">
+          <EntitySetMapping Name="stadiumDeleteData">
             <EntityTypeMapping TypeName="MalaebAlKorbModel.stadiumDeleteData">
               <MappingFragment StoreEntitySet="stadiumDeleteData">
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -252,7 +279,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="stadiumUpdateDatas">
+          <EntitySetMapping Name="stadiumUpdateData">
             <EntityTypeMapping TypeName="MalaebAlKorbModel.stadiumUpdateData">
               <MappingFragment StoreEntitySet="stadiumUpdateData">
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -274,7 +301,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
