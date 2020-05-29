@@ -24,4 +24,12 @@ namespace ProjectMaleabAlKorbV2.Models
         public Nullable<int> nbrPlayer { get; set; }
         public string Location { get; set; }
     }
+
+    public enum location
+    {
+        Marrakech,
+        CasaBlanca,
+        Rabat,
+        Tanger
+    }
 }

@@ -1,4 +1,6 @@
-﻿@model ProjectMaleabAlKorbV2.Models.Reservation
+﻿@using ProjectMaleabAlKorbV2.Models
+@model Reservation
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_PublicPage.cshtml";
@@ -47,51 +49,63 @@
             <form action="#" method="post">
                 <div class="main-agile-sectns">
                     <div class="agileits-btm-spc form-text1">
-                        @Html.TextBoxFor(r => r.FullName, new { @id="resName" , @class="form-control", @placeholder= "Full Name", @required =""} )
-                        <!--input type="text" name="Name" placeholder="" required=""-->
+                        @Html.TextBoxFor(r => r.FullName, new { @id = "resName", @class = "form-control", @placeholder = "Full Name", @required = "" })
+                        
                     </div>
                     <div class="agileits-btm-spc form-text2">
-                        @Html.TextBoxFor(r => r.Phone, new { @id = "resphone", @class = "form-control", @placeholder = "Full Name", @required = "" })
-                        <!--input type="text" name="Phone no" placeholder="Phone number" required=""-->
+                        @Html.TextBoxFor(r => r.Phone, new { @id = "resphone", @class = "form-control", @placeholder = "Phone", @required = "" })
+                       
                     </div>
                 </div>
                 <div class="agileits-btm-spc form-text">
-                    <input type="email" name="email" placeholder="Email" required="" value="@Session["emails"]" disabled>
+                    <input type="email" name="email" placeholder="Email" required="" value="@Session["emails"]">
                 </div>
                 <div class="clear"></div>
                 <h2 class="sub-head-w3ls">Booking Details</h2>
                 <div class="main-agile-sectns">
                     <div class="agileits-btm-spc form-text1">
-                        @Html.TextBoxFor(r => r.reservationDate, new { @id = "resName", @class = "form-control", @placeholder = "date res", @required = "" })
+                        @Html.TextBoxFor(r => r.reservationDate, new { @id = "dateRes", @class = "form-control", @placeholder = "Choose Date to Play", @required = "" })
 
-                        <!--input id="datepicker" name="Text" type="text" placeholder="Pick-up Date" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}"
-                               required=""-->
                     </div>
                     <div class="agileits-btm-spc form-text1">
-                        @Html.TextBoxFor(r => r.Location, new { @id = "resName", @class = "form-control", @placeholder = "LOCATION", @required = "" })
+                        @Html.DropDownListFor(r => r.Location, new SelectList(Enum.GetValues(typeof(location)))
+                        , "Seleted City" ,
+                        new { @style= "color: #fff; background: rgba(255, 255, 255, 0); border: none;border-bottom: 1px solid rgba(255, 255, 255, 0.27);box-sizing: border-box;font-family: 'Roboto', sans-serif;letter-spacing: 1.5px; padding: 10px 10px;outline: none;", @id = "locations", @class = "form-control frm-field form-text", @required = "" })
 
-                        <!--input type="text" name="Pick-up Location" placeholder="Pick-up Location" required=""-->
                     </div>
 
                 </div>
                 <div class="main-agile-sectns agileits-btm-spc form-text2">
-                    @Html.TextBoxFor(r => r.reservationTime, new { @id = "resName", @class = "form-control", @placeholder = "time", @required = "" })
-                    @*<input type="text" id="timepicker" name="Time" class="timepicker form-control" placeholder="Pick-up Time" value="">*@
-
-
+                   
+                    @Html.DropDownListFor(r => r.reservationTime, new List<SelectListItem>
+                       {
+                          new SelectListItem{Text = "9:00 h - 10:00 h", Value= "9:00" },
+                          new SelectListItem{Text = "10:00 h - 11:00 h", Value= "10:00" },
+                          new SelectListItem{Text = "11:00 h - 12:00 h", Value= "11:00" },
+                          new SelectListItem{Text = "12:00 h -13:00 h", Value= "12:00" },
+                          new SelectListItem{Text = "13:00 h - 14:00 h", Value= "13:00" },
+                          new SelectListItem{Text = "14:00 h - 15:00 h", Value= "14:00" },
+                          new SelectListItem{Text = "15:00 h - 16:00 h", Value= "15:00" },
+                          new SelectListItem{Text = "16:00 h - 17:00 h", Value= "16:00" },
+                          new SelectListItem{Text = "17:00 h - 18:00 h", Value= "17:00" },
+                          new SelectListItem{Text = "18:00 h - 19:00 h", Value= "18:00" },
+                          new SelectListItem{Text = "19:00 h - 20:00 h", Value= "19:00" },
+                          new SelectListItem{Text = "20:00 h - 21:00 h", Value= "20:00" },
+                          new SelectListItem{Text = "21:00 h - 22:00 h", Value= "21:00" },
+                          new SelectListItem{Text = "22:00 h - 23:00 h", Value= "22:00" }
+                       }, "Choose Houre to play", new { @id ="houres" ,@class = "form-control frm-field form-text", @style = "color: #fff; background: rgba(255, 255, 255, 0); border: none;border-bottom: 1px solid rgba(255, 255, 255, 0.27);box-sizing: border-box;font-family: 'Roboto', sans-serif;letter-spacing: 1.5px; padding: 10px 10px;outline: none;", @required = "" })
                 </div>
 
                 <div class="main-agile-sectns">
-                    @Html.TextBoxFor(r => r.nbrPlayer, new { @id = "resName", @class = "form-control", @placeholder = "nbr player", @required = "" })
-                    @*<select id="country" onchange="change_country(this.value)" class="frm-field form-text required">
-                        <option selected="true" disabled="disabled">~~Nombre Player~~</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                    </select>*@
-
+                    @Html.DropDownListFor(r => r.nbrPlayer, new List<SelectListItem>
+                       {
+                          new SelectListItem{Text = "7", Value= "7" },
+                          new SelectListItem{Text = "8", Value= "8" },
+                          new SelectListItem{Text = "9", Value= "9" },
+                          new SelectListItem{Text = "10", Value= "10" },
+                          new SelectListItem{Text = "11", Value= "11" }
+                       }, "Number of Players", new { @id ="country" ,@class = "form-control frm-field form-text", @required ="" })
+                   
                 </div>
 
                 <input type="submit" value="Submit">
@@ -107,11 +121,6 @@
 <script type="text/javascript" src="~/reservation_form/js/jquery-2.2.3.min.js"></script>
 <!-- Time -->
 <script type="text/javascript" src="~/reservation_form/js/wickedpicker.js"></script>
-<script type="text/javascript">
-    $('.timepicker').wickedpicker({
-        twentyFour: false
-    });
-</script>
 <!--// Time -->
 <!-- Calendar -->
 <script src="~/reservation_form/js/jquery-ui.js"></script>

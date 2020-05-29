@@ -30,7 +30,8 @@ namespace ProjectMaleabAlKorbV2.Controllers
         public ActionResult Index(Reservation reservation)
         {
             reservation.dateReservation = DateTime.Now;
-            reservation.Email = Session["emails"].ToString();
+            reservation.Email = "johari_Tijani12@gmail.com";
+                //Session["emails"].ToString();
             db.Reservations.Add(reservation);
             db.SaveChanges();
             return View();

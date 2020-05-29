@@ -183,45 +183,17 @@
                         <table class="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
+                                    <th>reservation No</th>
                                     <th>Full Name</th>
-                                    <th>Phone Number</th>
-                                    <th>Date Reservation</th>
-                                    <th>terrain</th>
+                                    <th>Email</th>
+                                    <th>Date to Play</th>
+                                    <th>Time to Play</th>
                                 </tr>
                             </thead>
-                            <tbody>
-
-                                <tr>
-                                    <td>item 1</td>
-                                    <td>item 2</td>
-                                    <td>item 3</td>
-                                    <td>item 4</td>
-                                </tr>
-                                <tr>
-                                    <td>item 1</td>
-                                    <td>item 2</td>
-                                    <td>item 3</td>
-                                    <td>item 4</td>
-                                </tr>
-                                <tr>
-                                    <td>item 1</td>
-                                    <td>item 2</td>
-                                    <td>item 3</td>
-                                    <td>item 4</td>
-                                </tr>
-                                <tr>
-                                    <td>item 1</td>
-                                    <td>item 2</td>
-                                    <td>item 3</td>
-                                    <td>item 4</td>
-                                </tr>
-
-
-
-                            </tbody>
+                            <tbody id="SetResList"></tbody>
                         </table>
                         <div class="text-right">
-                            <a href="#">More Tasks <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="@Url.Action("Reservations","Admin")">More Tasks <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -256,7 +228,10 @@
 </div>
 
 <script>
-
+    //
+    //
+    //
+    //Count number of player
     $.get('/Admin/CountPlayer', null, CountPlayers);
     function CountPlayers(cntPly) {
         var setData = $('#cntPlayer');
@@ -264,6 +239,10 @@
         setData.append(Data);
     }
 
+    //
+    //
+    //
+    //Count Number of Contact
     $.get('/Admin/CountContact', null, CountContact);
     function CountContact(cntCnt) {
         var setData = $('#cntContact');
@@ -271,6 +250,10 @@
         setData.append(Data);
     }
 
+    //
+    //
+    //
+    //Count Number of Stadium 
     $.get('/Admin/CountStadium', null, CountStadium);
     function CountStadium(cntStd) {
         var setData = $('#cntStadium');
@@ -278,6 +261,10 @@
         setData.append(Data);
     }
 
+    //
+    //
+    //
+    //Recent Players
     $.get('/Admin/GetPlyarsList', null, DataBind);
 
     function DataBind(playerList) {
@@ -293,6 +280,30 @@
             setData.append(Data);
         }
     }
+
+    //
+    //
+    //
+    //Recent Reservation
+    $.get('/Admin/GetReservationList', null, DataBindres);
+
+    function DataBindres(resList) {
+        var setData = $('#SetResList');
+        for (var i = resList.length - 1; i > resList.length - 5; i--) {
+            var Data = '<tr class="row_' + resList[i].reservationNo + '"><td>' +
+                resList[i].reservationNo + '</td><td>' +
+                resList[i].FullName + '</td><td>' +
+                resList[i].Email + '</td><td>' +
+                resList[i].reservationDate + '</td><td>' +
+                resList[i].reservationTime + '</td>' +
+                '</tr>';
+            setData.append(Data);
+        }
+    }
+
+    //
+    //
+    //
     //List of Recent Contact
     $.get('/Admin/GetContactList', null, DataBinds);
     

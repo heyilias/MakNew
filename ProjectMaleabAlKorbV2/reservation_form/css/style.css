@@ -362,6 +362,7 @@ h1 span {
 .book-agileinfo-form input[type="email"],
 select#country,
 select#country1,
+select#houres,
 input#datepicker {
     width: 100%;
     color: #fff;
@@ -385,7 +386,9 @@ input#datepicker {
 }
 
 select#country option,
-select#country1 option {
+select#country1 option,
+select#houres option,
+select#locations option {
     background: #000;
 }
 
