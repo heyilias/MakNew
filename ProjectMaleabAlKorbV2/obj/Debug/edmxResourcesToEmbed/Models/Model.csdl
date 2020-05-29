@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MalaebAlKorbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Admins">
+  <EntityType Name="Admin">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
@@ -80,15 +80,15 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="allData" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityContainer Name="MalaebAlKorbEntities1" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Admins" EntityType="Self.Admins" />
-    <EntitySet Name="Contact" EntityType="Self.Contact" />
-    <EntitySet Name="Player" EntityType="Self.Player" />
-    <EntitySet Name="playerDeleteData" EntityType="Self.playerDeleteData" />
-    <EntitySet Name="playerUpdateData" EntityType="Self.playerUpdateData" />
-    <EntitySet Name="Reservation" EntityType="Self.Reservation" />
-    <EntitySet Name="Stadium" EntityType="Self.Stadium" />
-    <EntitySet Name="stadiumDeleteData" EntityType="Self.stadiumDeleteData" />
-    <EntitySet Name="stadiumUpdateData" EntityType="Self.stadiumUpdateData" />
+  <EntityContainer Name="MalaebAlKorbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Contacts" EntityType="Self.Contact" />
+    <EntitySet Name="Players" EntityType="Self.Player" />
+    <EntitySet Name="playerDeleteDatas" EntityType="Self.playerDeleteData" />
+    <EntitySet Name="playerUpdateDatas" EntityType="Self.playerUpdateData" />
+    <EntitySet Name="Reservations" EntityType="Self.Reservation" />
+    <EntitySet Name="Stadia" EntityType="Self.Stadium" />
+    <EntitySet Name="stadiumDeleteDatas" EntityType="Self.stadiumDeleteData" />
+    <EntitySet Name="stadiumUpdateDatas" EntityType="Self.stadiumUpdateData" />
   </EntityContainer>
 </Schema>

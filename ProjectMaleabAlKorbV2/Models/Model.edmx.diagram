@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fce7ce198b1d420ea7d97ca63eb7ffc6" Name="Diagram1">
-        <EntityTypeShape EntityType="MalaebAlKorbModel.Admins" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="7857aa6271954debb4d094a749db137c" Name="Diagram1">
+        <EntityTypeShape EntityType="MalaebAlKorbModel.Admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MalaebAlKorbModel.Contact" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MalaebAlKorbModel.Player" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MalaebAlKorbModel.playerDeleteData" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />

@@ -7,12 +7,22 @@ using System.Web.Mvc;
 
 namespace ProjectMaleabAlKorbV2.Controllers
 {
+    [HandleError]
     public class ReservationController : Controller
     {
         MalaebAlKorbEntities db = new MalaebAlKorbEntities();
         // GET: Reservation
         public ActionResult Index()
         {
+            //if (Session["emails"] != null)
+            //{
+            //    return View();
+            //}
+            //else
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
+
             return View();
         }
 
@@ -21,7 +31,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
         {
             reservation.dateReservation = DateTime.Now;
             reservation.Email = Session["emails"].ToString();
-            db.Reservation.Add(reservation);
+            db.Reservations.Add(reservation);
             db.SaveChanges();
             return View();
         }

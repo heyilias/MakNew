@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace ProjectMaleabAlKorbV2.Controllers
 {
+    [HandleError]
     public class AdminController : Controller
     {
 
@@ -20,7 +21,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
         }
 
         [HttpPost]
-        public ActionResult LoginAdmin(Admins admin)
+        public ActionResult LoginAdmin(Admin admin)
         {
             var adm = db.Admins.Where(a => a.Emails == admin.Emails && a.Passwords == admin.Passwords).FirstOrDefault();
             if (adm != null)
@@ -53,7 +54,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Admin");
+                return RedirectToAction("LoginAdmin", "Admin");
             }
             
            
@@ -76,27 +77,27 @@ namespace ProjectMaleabAlKorbV2.Controllers
         //Nombre Players 
         public JsonResult CountPlayer()
         {
-            var countPlayer = db.Player.Count();
+            var countPlayer = db.Players.Count();
             return Json(countPlayer, JsonRequestBehavior.AllowGet);
         }
 
         //Nombre Contact 
         public JsonResult CountContact()
         {
-            var countctn = db.Contact.Count();
+            var countctn = db.Contacts.Count();
             return Json(countctn, JsonRequestBehavior.AllowGet);
         }
         //Nombre Stadium 
         public JsonResult CountStadium()
         {
-            var countStd = db.Stadium.Count();
+            var countStd = db.Stadia.Count();
             return Json(countStd, JsonRequestBehavior.AllowGet);
         }
 
         //Show all players in table registers
         public JsonResult GetPlyarsList()
         {
-            List<Player> playerList = db.Player.ToList<Player>();
+            List<Player> playerList = db.Players.ToList<Player>();
             
             return Json(playerList, JsonRequestBehavior.AllowGet);
         }
@@ -111,7 +112,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
                 {
                     if (model.playerNo > 0)
                     {
-                        Player player = db.Player.Where(p =>p.playerNo == model.playerNo).FirstOrDefault();
+                        Player player = db.Players.Where(p =>p.playerNo == model.playerNo).FirstOrDefault();
                         player.names = model.names;
                         player.emails = model.emails;
                         player.passwords = model.passwords;
@@ -122,7 +123,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
                     else
                     {
                         model.dateCreated = DateTime.Now;
-                        db.Player.Add(model);
+                        db.Players.Add(model);
                         db.SaveChanges();
                         result = true;
                     }
@@ -140,7 +141,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
         // Update Player
         public JsonResult GetPlayerById(int playerNo)
         {
-            Player model = db.Player.Where(x => x.playerNo == playerNo).FirstOrDefault();
+            Player model = db.Players.Where(x => x.playerNo == playerNo).FirstOrDefault();
             string value = string.Empty;
             value = JsonConvert.SerializeObject(model, Formatting.Indented, new JsonSerializerSettings
             {
@@ -154,11 +155,11 @@ namespace ProjectMaleabAlKorbV2.Controllers
         public JsonResult DeletePlayer(int playerNo)
         {
             bool result = false;
-            Player player = db.Player.Where(p => p.playerNo == playerNo ).FirstOrDefault();
+            Player player = db.Players.Where(p => p.playerNo == playerNo ).FirstOrDefault();
             if (player != null)
             {
                 //player.dateCreated = DateTime.Now;
-                db.Player.Remove(player);
+                db.Players.Remove(player);
                 db.SaveChanges();
                 result = true;
             }
@@ -182,7 +183,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
         //Show all Reservation 
         public JsonResult GetReservationList()
         {
-            List<Reservation> resList = db.Reservation.ToList<Reservation>();
+            List<Reservation> resList = db.Reservations.ToList<Reservation>();
 
             return Json(resList, JsonRequestBehavior.AllowGet);
         }
@@ -196,7 +197,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
                 {
                     if (model.reservationNo > 0)
                     {
-                        Reservation res = db.Reservation.Where(r => r.reservationNo == model.reservationNo).FirstOrDefault();
+                        Reservation res = db.Reservations.Where(r => r.reservationNo == model.reservationNo).FirstOrDefault();
                         res.reservationTime = model.reservationTime;
                         res.reservationDate = model.reservationDate;
                         res.dateReservation = DateTime.Now;
@@ -208,7 +209,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
                     else
                     {
                         model.dateReservation = DateTime.Now;
-                        db.Reservation.Add(model);
+                        db.Reservations.Add(model);
                         db.SaveChanges();
                         result = true;
                     }
@@ -226,7 +227,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
         // Update Reservation
         public JsonResult GetResById(int resNo)
         {
-            Reservation model = db.Reservation.Where(r => r.reservationNo == resNo).FirstOrDefault();
+            Reservation model = db.Reservations.Where(r => r.reservationNo == resNo).FirstOrDefault();
             string value = string.Empty;
             value = JsonConvert.SerializeObject(model, Formatting.Indented, new JsonSerializerSettings
             {
@@ -240,11 +241,11 @@ namespace ProjectMaleabAlKorbV2.Controllers
         public JsonResult DeleteRes(int resID)
         {
             bool result = false;
-            Reservation res = db.Reservation.Where(r => r.reservationNo == resID).FirstOrDefault();
+            Reservation res = db.Reservations.Where(r => r.reservationNo == resID).FirstOrDefault();
             if (res != null)
             {
                 //player.dateCreated = DateTime.Now;
-                db.Reservation.Remove(res);
+                db.Reservations.Remove(res);
                 db.SaveChanges();
                 result = true;
             }
@@ -267,7 +268,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
         
         public JsonResult GetContactList()
         {
-            List<Contact> ContactList = db.Contact.ToList<Contact>();
+            List<Contact> ContactList = db.Contacts.ToList<Contact>();
 
             return Json(ContactList, JsonRequestBehavior.AllowGet);
         }
@@ -281,7 +282,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
                 {
                     if (model.messageNo > 0)
                     {
-                        Contact player = db.Contact.Where(p => p.messageNo == model.messageNo).FirstOrDefault();
+                        Contact player = db.Contacts.Where(p => p.messageNo == model.messageNo).FirstOrDefault();
                         player.name = model.name;
                         player.emails = model.emails;
                         player.allMessage = model.allMessage;
@@ -291,7 +292,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
                     else
                     {
                         model.dateMessage = DateTime.Now;
-                        db.Contact.Add(model);
+                        db.Contacts.Add(model);
                         db.SaveChanges();
                         result = true;
                     }
@@ -309,7 +310,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
         // Update Contact
         public JsonResult GetContactById(int msgNo)
         {
-            Contact model = db.Contact.Where(x => x.messageNo == msgNo).FirstOrDefault();
+            Contact model = db.Contacts.Where(x => x.messageNo == msgNo).FirstOrDefault();
             string value = string.Empty;
             value = JsonConvert.SerializeObject(model, Formatting.Indented, new JsonSerializerSettings
             {
@@ -322,11 +323,11 @@ namespace ProjectMaleabAlKorbV2.Controllers
         public JsonResult DeleteeContact(int msgNo)
         {
             bool result = false;
-            Contact cnt = db.Contact.Where(c => c.messageNo == msgNo).FirstOrDefault();
+            Contact cnt = db.Contacts.Where(c => c.messageNo == msgNo).FirstOrDefault();
             if (cnt != null)
             {
                 
-                db.Contact.Remove(cnt);
+                db.Contacts.Remove(cnt);
                 db.SaveChanges();
                 result = true;
             }
@@ -350,7 +351,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
         //show the list
         public JsonResult GetStadiumList()
         {
-            List<Stadium> stadiumList = db.Stadium.ToList<Stadium>();
+            List<Stadium> stadiumList = db.Stadia.ToList<Stadium>();
 
             return Json(stadiumList, JsonRequestBehavior.AllowGet);
         }
@@ -364,7 +365,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
                 {
                     if (model.stadiumNo > 0)
                     {
-                        Stadium stadium = db.Stadium.Where(s => s.stadiumNo == model.stadiumNo).FirstOrDefault();
+                        Stadium stadium = db.Stadia.Where(s => s.stadiumNo == model.stadiumNo).FirstOrDefault();
                         stadium.stadiumName = model.stadiumName;
                         stadium.stadiumCity = model.stadiumCity;
                         stadium.stadiumCapacity = model.stadiumCapacity;
@@ -374,7 +375,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
                     else
                     {
                         
-                        db.Stadium.Add(model);
+                        db.Stadia.Add(model);
                         db.SaveChanges();
                         result = true;
                     }
@@ -391,7 +392,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
         // Update Stadium
         public JsonResult GetStadiumById(int stdID)
         {
-            Stadium model = db.Stadium.Where(s => s.stadiumNo == stdID).FirstOrDefault();
+            Stadium model = db.Stadia.Where(s => s.stadiumNo == stdID).FirstOrDefault();
             string value = string.Empty;
             value = JsonConvert.SerializeObject(model, Formatting.Indented, new JsonSerializerSettings
             {
@@ -404,11 +405,11 @@ namespace ProjectMaleabAlKorbV2.Controllers
         public JsonResult DeleteStadium(int stadiumNo)
         {
             bool result = false;
-            Stadium stadium = db.Stadium.Where(s => s.stadiumNo == stadiumNo).FirstOrDefault();
+            Stadium stadium = db.Stadia.Where(s => s.stadiumNo == stadiumNo).FirstOrDefault();
             if (stadium != null)
             {
                 
-                db.Stadium.Remove(stadium);
+                db.Stadia.Remove(stadium);
                 db.SaveChanges();
                 result = true;
             }

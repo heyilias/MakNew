@@ -19,10 +19,17 @@
     @Styles.Render("~/template/css")
     <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600,600i,700,900" rel="stylesheet">
 
+    <link rel="icon" href="~/Logo.ico" />
 
+
+    <script>
+        function showNotify() {
+            $.notify("Warning: In Progress...", { globalPosition: 'top-center', className: 'info' });
+        }
+    </script>
 </head>
 <body>
-    
+
     <div class="header">
 
         <div class="design_header_right">
@@ -33,9 +40,9 @@
         </div>
         <div class="design_header_left">
             <ul>
-               @{ 
-                   Html.RenderPartial("_loginSingUp");
-               }
+                @{
+                    Html.RenderPartial("_loginSingUp");
+                }
             </ul>
 
         </div>
@@ -173,7 +180,7 @@
     <script src="~/Scripts/slick.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
         $(document).on('ready', function () {
-            
+
             $(".center").slick({
                 dots: true,
                 infinite: true,
@@ -308,6 +315,8 @@
                 }
             })
         });
+
     </script>
+    <script src="~/Scripts/notify.js"></script>
 </body>
 </html>

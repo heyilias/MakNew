@@ -12,7 +12,7 @@ namespace ProjectMaleabAlKorbV2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Admins
+    public partial class Admin
     {
         public int ID { get; set; }
         public string Emails { get; set; }

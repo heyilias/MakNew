@@ -16,7 +16,7 @@ namespace ProjectMaleabAlKorbV2.Models
     public partial class MalaebAlKorbEntities : DbContext
     {
         public MalaebAlKorbEntities()
-            : base("name=MalaebAlKorbEntities1")
+            : base("name=MalaebAlKorbEntities")
         {
         }
     
@@ -25,14 +25,14 @@ namespace ProjectMaleabAlKorbV2.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Admins> Admins { get; set; }
-        public virtual DbSet<Contact> Contact { get; set; }
-        public virtual DbSet<Player> Player { get; set; }
-        public virtual DbSet<playerDeleteData> playerDeleteData { get; set; }
-        public virtual DbSet<playerUpdateData> playerUpdateData { get; set; }
-        public virtual DbSet<Reservation> Reservation { get; set; }
-        public virtual DbSet<Stadium> Stadium { get; set; }
-        public virtual DbSet<stadiumDeleteData> stadiumDeleteData { get; set; }
-        public virtual DbSet<stadiumUpdateData> stadiumUpdateData { get; set; }
+        public virtual DbSet<Admin> Admins { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<Player> Players { get; set; }
+        public virtual DbSet<playerDeleteData> playerDeleteDatas { get; set; }
+        public virtual DbSet<playerUpdateData> playerUpdateDatas { get; set; }
+        public virtual DbSet<Reservation> Reservations { get; set; }
+        public virtual DbSet<Stadium> Stadia { get; set; }
+        public virtual DbSet<stadiumDeleteData> stadiumDeleteDatas { get; set; }
+        public virtual DbSet<stadiumUpdateData> stadiumUpdateDatas { get; set; }
     }
 }

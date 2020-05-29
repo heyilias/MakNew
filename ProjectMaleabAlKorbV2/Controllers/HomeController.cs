@@ -8,6 +8,7 @@ using System.Web.Security;
 
 namespace ProjectMaleabAlKorbV2.Controllers
 {
+    [HandleError]
     public class HomeController : Controller
     {
         MalaebAlKorbEntities db = new MalaebAlKorbEntities();
@@ -36,7 +37,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
                 if (model.messageNo > 0)
                 {
                     // Response.Write("<script>console.log('messageNo > 0')</script>");
-                    Contact contact = db.Contact.SingleOrDefault(x => x.messageNo == model.messageNo);
+                    Contact contact = db.Contacts.SingleOrDefault(x => x.messageNo == model.messageNo);
                     contact.name = model.name;
                     contact.emails = model.emails;
                     contact.allMessage = model.allMessage;
@@ -52,7 +53,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
                     contact.emails = model.emails;
                     contact.allMessage = model.allMessage;
                     contact.dateMessage = DateTime.Now;
-                    db.Contact.Add(contact);
+                    db.Contacts.Add(contact);
                     db.SaveChanges();
                     result = true;
                 }
@@ -68,7 +69,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
         public JsonResult saveData(Player player)
         {
             player.dateCreated = DateTime.Now;
-            db.Player.Add(player);
+            db.Players.Add(player);
             db.SaveChanges();
             Session["emails"] = player.emails;
 
@@ -79,7 +80,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
         {
             var result = "fail";
             //var isCheck = 0;
-            var ply = db.Player.Where(p => p.emails == player.emails && p.passwords == player.passwords).FirstOrDefault();
+            var ply = db.Players.Where(p => p.emails == player.emails && p.passwords == player.passwords).FirstOrDefault();
             if (ply != null)
             {
                 result = "success";
