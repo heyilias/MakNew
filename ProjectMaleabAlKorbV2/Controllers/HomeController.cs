@@ -22,48 +22,21 @@ namespace ProjectMaleabAlKorbV2.Controllers
 
             return View();
         }
-
+        
         public ActionResult Contact()
         {
-
             return View();
         }
         //Contact
-        public JsonResult SaveDataInDatabase(Contact model)
+        [HttpPost]
+        public ActionResult Contact(Contact model)
         {
-            var result = false;
-            try
-            {
-                if (model.messageNo > 0)
-                {
-                    // Response.Write("<script>console.log('messageNo > 0')</script>");
-                    Contact contact = db.Contacts.SingleOrDefault(x => x.messageNo == model.messageNo);
-                    contact.name = model.name;
-                    contact.emails = model.emails;
-                    contact.allMessage = model.allMessage;
-                    contact.dateMessage = DateTime.Now;
-                    db.SaveChanges();
-                    result = true;
-                }
-                else
-                {
-                    // Response.Write("<script>console.log('else')</script>");
-                    Contact contact = new Contact();
-                    contact.name = model.name;
-                    contact.emails = model.emails;
-                    contact.allMessage = model.allMessage;
-                    contact.dateMessage = DateTime.Now;
-                    db.Contacts.Add(contact);
-                    db.SaveChanges();
-                    result = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                Response.Write("<script>alert('" + ex + "')</script>");
-            }
+            
+            model.dateMessage = DateTime.Now;
+            db.Contacts.Add(model);
+            db.SaveChanges();
 
-            return Json(result, JsonRequestBehavior.AllowGet);
+            return RedirectToAction("Index", "Home");
         }
         //Player
         public JsonResult saveData(Player player)

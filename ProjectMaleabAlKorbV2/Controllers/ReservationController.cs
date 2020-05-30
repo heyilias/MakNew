@@ -14,16 +14,16 @@ namespace ProjectMaleabAlKorbV2.Controllers
         // GET: Reservation
         public ActionResult Index()
         {
-            //if (Session["emails"] != null)
-            //{
-            //    return View();
-            //}
-            //else
-            //{
-            //    return RedirectToAction("Index", "Home");
-            //}
+            if (Session["emails"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
-            return View();
+            // return View();
         }
 
         [HttpPost]

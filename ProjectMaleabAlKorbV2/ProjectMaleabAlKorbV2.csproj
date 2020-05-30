@@ -188,10 +188,12 @@
     <Content Include="Content\BoxRervation.css" />
     <Content Include="Content\flexslider.css" />
     <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesomee.css" />
     <Content Include="Content\lsb.css" />
     <Content Include="Content\mainStyles.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\style404.css" />
+    <Content Include="Content\styleContact.css" />
     <Content Include="Content\styleFinderPanel.css" />
     <Content Include="css\animate.css" />
     <Content Include="css\bootstrap.css" />

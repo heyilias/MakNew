@@ -857,4 +857,3 @@ C:\Users\admin\Desktop\New folder\MakNew\ProjectMaleabAlKorbV2\obj\Debug\Project
 C:\Users\admin\Desktop\New folder\MakNew\ProjectMaleabAlKorbV2\obj\Debug\ProjectMaleabAlKorbV2.csproj.CopyComplete
 C:\Users\admin\Desktop\New folder\MakNew\ProjectMaleabAlKorbV2\obj\Debug\ProjectMaleabAlKorbV2.dll
 C:\Users\admin\Desktop\New folder\MakNew\ProjectMaleabAlKorbV2\obj\Debug\ProjectMaleabAlKorbV2.pdb
-C:\Users\admin\Desktop\New folder\MakNew\ProjectMaleabAlKorbV2\obj\Debug\ProjectMaleabAlKorbV2.csprojAssemblyReference.cache

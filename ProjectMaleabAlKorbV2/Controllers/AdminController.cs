@@ -326,7 +326,6 @@ namespace ProjectMaleabAlKorbV2.Controllers
             Contact cnt = db.Contacts.Where(c => c.messageNo == msgNo).FirstOrDefault();
             if (cnt != null)
             {
-                
                 db.Contacts.Remove(cnt);
                 db.SaveChanges();
                 result = true;

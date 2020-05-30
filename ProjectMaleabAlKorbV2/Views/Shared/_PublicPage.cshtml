@@ -15,8 +15,10 @@
         }
     </script>
     <title>@ViewBag.Title</title>
+    @RenderSection("Contact", false)
     @RenderSection("Style_Reservation", false)
     @Styles.Render("~/template/css")
+
     <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600,600i,700,900" rel="stylesheet">
 
     <link rel="icon" href="~/Logo.ico" />
@@ -299,24 +301,6 @@
     </script>
     <!-- //here ends scrolling icon -->
 
-    <script>
-        $('#sendMsgs').click(function () {
-            //console.log('22');
-            var data = $("#submitForm").serialize();
-            $.ajax({
-                type: "Post",
-                url: "/Home/SaveDataInDatabase",
-                data: data,
-                success: function (result) {
-                    alert("Success!..");
-                    window.location.href = "/Home/index";
-                    //$("#myModalpop").modal("hide");
-
-                }
-            })
-        });
-
-    </script>
     <script src="~/Scripts/notify.js"></script>
 </body>
 </html>
