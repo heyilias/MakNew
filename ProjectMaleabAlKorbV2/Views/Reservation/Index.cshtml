@@ -24,6 +24,7 @@
 }
 
 
+
 <!--Body-->
 <!--background-->
 <br />
@@ -46,15 +47,15 @@
     <div class="book-appointment">
         <h2>Personal Details</h2>
         <div class="book-agileinfo-form">
-            <form action="#" method="post">
+            <form action="#" method="post" id="frmRes">
                 <div class="main-agile-sectns">
                     <div class="agileits-btm-spc form-text1">
                         @Html.TextBoxFor(r => r.FullName, new { @id = "resName", @class = "form-control", @placeholder = "Full Name", @required = "" })
-                        
+
                     </div>
                     <div class="agileits-btm-spc form-text2">
                         @Html.TextBoxFor(r => r.Phone, new { @id = "resphone", @class = "form-control", @placeholder = "Phone", @required = "" })
-                       
+
                     </div>
                 </div>
                 <div class="agileits-btm-spc form-text">
@@ -68,15 +69,17 @@
 
                     </div>
                     <div class="agileits-btm-spc form-text1">
+
+
                         @Html.DropDownListFor(r => r.Location, new SelectList(Enum.GetValues(typeof(location)))
-                        , "Seleted City" ,
-                        new { @style= "color: #fff; background: rgba(255, 255, 255, 0); border: none;border-bottom: 1px solid rgba(255, 255, 255, 0.27);box-sizing: border-box;font-family: 'Roboto', sans-serif;letter-spacing: 1.5px; padding: 10px 10px;outline: none;", @id = "locations", @class = "form-control frm-field form-text", @required = "" })
+                       , "Seleted City" ,
+                       new { @style= "color: #fff; background: rgba(255, 255, 255, 0); border: none;border-bottom: 1px solid rgba(255, 255, 255, 0.27);box-sizing: border-box;font-family: 'Roboto', sans-serif;letter-spacing: 1.5px; padding: 10px 10px;outline: none;", @id = "locations", @class = "form-control frm-field form-text", @required = "" })
 
                     </div>
 
                 </div>
                 <div class="main-agile-sectns agileits-btm-spc form-text2">
-                   
+
                     @Html.DropDownListFor(r => r.reservationTime, new List<SelectListItem>
                        {
                           new SelectListItem{Text = "9:00 h - 10:00 h", Value= "9:00" },
@@ -105,28 +108,55 @@
                           new SelectListItem{Text = "10", Value= "10" },
                           new SelectListItem{Text = "11", Value= "11" }
                        }, "Number of Players", new { @id ="country" ,@class = "form-control frm-field form-text", @required ="" })
-                   
-                </div>
 
-                <input type="submit" value="Submit">
-                <input type="reset" value="Reset">
+                </div>
+                <button class="btn btn-success form-control" type="button" onclick="saveRes()">Send</button>
+               
                 <div class="clear"></div>
             </form>
+
+           
         </div>
 
     </div>
 </div>
 <br />
 
-<script type="text/javascript" src="~/reservation_form/js/jquery-2.2.3.min.js"></script>
-<!-- Time -->
-<script type="text/javascript" src="~/reservation_form/js/wickedpicker.js"></script>
-<!--// Time -->
-<!-- Calendar -->
-<script src="~/reservation_form/js/jquery-ui.js"></script>
-<script>
-    $(function () {
-        $("#datepicker,#datepicker1,#datepicker2,#datepicker3").datepicker({ minDate: new Date() });
-    });
-</script>
-<!-- //Calendar -->
+@section scriptReservation{
+    
+    <script type="text/javascript" src="~/reservation_form/js/jquery-2.2.3.min.js"></script>
+    <!-- Time -->
+    <script type="text/javascript" src="~/reservation_form/js/wickedpicker.js"></script>
+    <!--// Time -->
+    <!-- Calendar -->
+    <script src="~/reservation_form/js/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#dateRes").datepicker({ minDate: new Date(), dateFormat: "yy-mm-dd", changeMonth: true, changeYear: true } );
+             // $("#dateRes").datepicker({  });
+           
+        });
+
+        function saveRes() {
+            var data = $('#frmRes').serialize();
+            $.ajax({
+                type: "POST",
+                data: data,
+                url: "/Reservation/resSaveData",
+                success: function (result) {
+                   
+                    if (result) {
+                        $('#frmRes')[0].reset();
+                        $.notify("Your reservation is done with success", { globalPosition: 'top-center', className: 'success' });
+                    } else {
+                        $.notify("This reservation is already booked", { globalPosition: 'top-center', className: 'error' });
+
+                    }
+
+                }
+            })
+        }
+    </script>
+    <!-- //Calendar -->
+
+}

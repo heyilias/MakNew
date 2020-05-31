@@ -66,6 +66,14 @@
     <Property Name="stadiumCity" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="stadiumCapacity" Type="tinyint" Nullable="false" />
   </EntityType>
+  <EntityType Name="StadiumByCity">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StadiumName" Type="varchar" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="stadiumDeleteData">
     <Key>
       <PropertyRef Name="id" />
@@ -88,6 +96,7 @@
     <EntitySet Name="playerUpdateData" EntityType="Self.playerUpdateData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Stadium" EntityType="Self.Stadium" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StadiumByCity" EntityType="Self.StadiumByCity" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="stadiumDeleteData" EntityType="Self.stadiumDeleteData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="stadiumUpdateData" EntityType="Self.stadiumUpdateData" Schema="dbo" store:Type="Tables" />
   </EntityContainer>

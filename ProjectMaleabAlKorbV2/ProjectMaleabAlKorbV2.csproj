@@ -172,6 +172,9 @@
     <Compile Include="Models\Stadium.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\StadiumByCity.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\stadiumDeleteData.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

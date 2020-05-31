@@ -90,5 +90,14 @@
     <EntitySet Name="Stadia" EntityType="Self.Stadium" />
     <EntitySet Name="stadiumDeleteDatas" EntityType="Self.stadiumDeleteData" />
     <EntitySet Name="stadiumUpdateDatas" EntityType="Self.stadiumUpdateData" />
+    <EntitySet Name="StadiumByCities" EntityType="MalaebAlKorbModel.StadiumByCity" />
   </EntityContainer>
+  <EntityType Name="StadiumByCity">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StadiumName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

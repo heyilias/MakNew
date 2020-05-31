@@ -25,7 +25,7 @@ namespace ProjectMaleabAlKorbV2.Models
         public string Location { get; set; }
     }
 
-    public enum location
+   public enum location
     {
         Marrakech,
         CasaBlanca,

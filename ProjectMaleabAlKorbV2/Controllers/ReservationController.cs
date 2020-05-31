@@ -22,21 +22,45 @@ namespace ProjectMaleabAlKorbV2.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-
             // return View();
         }
 
-        [HttpPost]
-        public ActionResult Index(Reservation reservation)
+        //[HttpPost]
+        //public ActionResult Index(Reservation reservation)
+        //{
+        //    var Exist = db.Reservations.Where(r => r.reservationDate == reservation.reservationDate && r.reservationTime == reservation.reservationTime).FirstOrDefault();
+        //    if (Exist == null)
+        //    {
+        //        reservation.dateReservation = DateTime.Now;
+        //        reservation.Email = "johari_Tijani12@gmail.com";
+        //        //Session["emails"].ToString();
+        //        db.Reservations.Add(reservation);
+        //        db.SaveChanges();
+        //    }
+        //    else
+        //    {
+        //        ViewBag.ShowError = "Ok";
+                
+        //    }
+           
+        //    return View();
+        //}
+
+        public JsonResult resSaveData(Reservation res)
         {
-            reservation.dateReservation = DateTime.Now;
-            reservation.Email = "johari_Tijani12@gmail.com";
-                //Session["emails"].ToString();
-            db.Reservations.Add(reservation);
-            db.SaveChanges();
-            return View();
+            var result = false;
+            var Exist = db.Reservations.Where(r => r.reservationDate == res.reservationDate && r.reservationTime == res.reservationTime).FirstOrDefault();
+            if (Exist == null)
+            {
+                res.dateReservation = DateTime.Now;
+                res.Email = Session["emails"].ToString();
+                db.Reservations.Add(res);
+                db.SaveChanges();
+                result = true;
+            }
+            
+           
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
-
-
     }
 }

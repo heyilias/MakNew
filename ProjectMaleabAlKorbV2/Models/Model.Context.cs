@@ -34,5 +34,6 @@ namespace ProjectMaleabAlKorbV2.Models
         public virtual DbSet<Stadium> Stadia { get; set; }
         public virtual DbSet<stadiumDeleteData> stadiumDeleteDatas { get; set; }
         public virtual DbSet<stadiumUpdateData> stadiumUpdateDatas { get; set; }
+        public virtual DbSet<StadiumByCity> StadiumByCities { get; set; }
     }
 }

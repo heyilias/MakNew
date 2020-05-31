@@ -28,6 +28,9 @@
         function showNotify() {
             $.notify("Warning: In Progress...", { globalPosition: 'top-center', className: 'info' });
         }
+        function showNotifySuccess() {
+            $.notify("You're accepted the terms", { globalPosition: 'top-center', className: 'success' });
+        }
     </script>
 </head>
 <body>
@@ -300,7 +303,10 @@
         });
     </script>
     <!-- //here ends scrolling icon -->
+    @RenderSection("scriptReservation", false)
 
+    
     <script src="~/Scripts/notify.js"></script>
+
 </body>
 </html>

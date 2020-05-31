@@ -188,7 +188,7 @@ namespace ProjectMaleabAlKorbV2.Controllers
             return Json(resList, JsonRequestBehavior.AllowGet);
         }
 
-        //ADD PLAYERS
+        //ADD Reservation
         public JsonResult SaveDataInDatabaseReservation(Reservation model)
         {
             var result = false;
